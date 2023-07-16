@@ -10,12 +10,14 @@ interface Drink {
 
 interface Props {
     data: Drink[];
+    ingredients: string[]
 }
 
-const CocktailList: React.FC <Props> = function({data}){
+const CocktailList: React.FC <Props> = function({data, ingredients }){
 
     const ListOfCocktails = data.map((item: Drink)=>{
-        return <Cocktail key={item.strDrink} data={item}></Cocktail>
+        
+        return <Cocktail key={item.strDrink} ingredients={ingredients} data={item}></Cocktail>
     })
 
     return <div>

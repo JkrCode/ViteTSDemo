@@ -1,20 +1,33 @@
-const IngredientPicker:React.FC<any> = function(){
+import { useState } from "react";
+
+const IngredientPicker:React.FC<any> = function({ingredients, setIngredients}){
+    const [inputIngredient, setInputIngredient] = useState("");
+
+    const handleChange = (event:any)=> {
+        setInputIngredient(event.target.value)
+    }
+    const handleClick = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setIngredients((prevIngredients: string[]) => [
+          ...prevIngredients,
+          inputIngredient,
+        ]);
+        setInputIngredient("");
+      };
+
+    const listOfIngredients = ingredients.map((ingredient:string)=>{
+        return <div key={ingredient}>
+            {ingredient}
+        </div>
+    })
+    
+
     return (
-        <div className="flex flex-col">
-            
-                <div className="flex-none w-24">
-                    <p>Zitrone</p>
-                    <input type="checkbox"></input>
-                </div>
-                <div className="flex-none w-24">
-                    <p>Orange</p>
-                    <input type="checkbox"></input>
-                </div>
-                <div className="flex-none w-24">
-                    <p>Limette</p>
-                    <input type="checkbox"></input>
-                </div>
-            
+        <div>
+            <div>{listOfIngredients}</div>
+            <form onSubmit={handleClick}>
+                <input className="rounded border-2" onChange={handleChange} value={inputIngredient}></input>
+            </form>
         </div>
     )
 }

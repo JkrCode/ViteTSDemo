@@ -7,6 +7,9 @@ function App() {
 
 const [drinks, setDrinks] = useState([]);
 
+const [ingredients, setIngredients] = useState([]);
+
+
 async function handleClick () {
   const data = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita');
   setDrinks(data.data.drinks);
@@ -20,8 +23,8 @@ async function handleClick () {
         <h1 className="text-xl italic font-bold mb-4 ">Cocktailfinder</h1>
       </div>
       <div className="flex flex-row justify-center">
-          <IngredientPicker />
-          <CocktailList data={drinks}/>
+          <IngredientPicker ingredients={ingredients} setIngredients={setIngredients} />
+          <CocktailList ingredients={ingredients} data={drinks}/>
       </div>
       <div className="flex justify-center">
         <button onClick={handleClick}>get drinks</button>

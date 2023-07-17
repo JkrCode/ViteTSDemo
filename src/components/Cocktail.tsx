@@ -1,18 +1,27 @@
-const Cocktail: React.FC<any> = function ({ data, ingredients }) {
-  const ingredientComponents = [];
+import React from "react";
+import Drink from "./Interfaces/Drink";
+
+interface CocktailProps {
+  data: Drink;
+  ingredients: string[];
+}
+
+const Cocktail: React.FC<CocktailProps> = function ({ data, ingredients }) {
+  const ingredientComponents: React.ReactNode[] = [];
 
   for (let i = 1; i <= 4; i++) {
-    const ingredientKey = `strIngredient${i}`;
+    const ingredientKey = `strIngredient${i}` as keyof Drink;
     const ingredientValue = data[ingredientKey];
 
-    const Ingredient = () => {
+    const Ingredient: React.FC = () => {
       if (ingredientValue !== null) {
         const lowerCaseIngredient = ingredientValue.toLowerCase();
 
         if (
           ingredients !== undefined &&
-          ingredients.some((ingredient:string) =>
-            ingredient.toLowerCase() === lowerCaseIngredient
+          ingredients.some(
+            (ingredient: string) =>
+              ingredient.toLowerCase() === lowerCaseIngredient
           )
         ) {
           return <p className="font-bold">{ingredientValue}</p>;

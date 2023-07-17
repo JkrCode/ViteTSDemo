@@ -2,12 +2,13 @@ import axios from "axios";
 import IngredientPicker from "./components/IngredientPicker";
 import { useState } from "react";
 import CocktailList from "./components/CocktailList";
+import Drink from "./components/Interfaces/Drink";
 
 function App() {
 
-const [drinks, setDrinks] = useState([]);
+const [drinks, setDrinks] = useState<Drink[]>([]);
 
-const [ingredients, setIngredients] = useState([]);
+const [ingredients, setIngredients] = useState<string[]>([]);
 
 
 async function handleClick () {

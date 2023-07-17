@@ -11,14 +11,17 @@ const Cocktail: React.FC<any> = function ({ data, ingredients }) {
 
         if (
           ingredients !== undefined &&
-          ingredients.includes(lowerCaseIngredient)
+          ingredients.some((ingredient:string) =>
+            ingredient.toLowerCase() === lowerCaseIngredient
+          )
         ) {
           return <p className="font-bold">{ingredientValue}</p>;
         } else {
+          console.log(ingredients);
           return <p>{ingredientValue}</p>;
         }
       } else {
-        return null; 
+        return null; // or handle the null case as desired
       }
     };
 

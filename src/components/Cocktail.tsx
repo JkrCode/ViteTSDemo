@@ -30,7 +30,7 @@ const Cocktail: React.FC<CocktailProps> = function ({ data, ingredients }) {
           return <p>{ingredientValue}</p>;
         }
       } else {
-        return null; // or handle the null case as desired
+        return null; 
       }
     };
 

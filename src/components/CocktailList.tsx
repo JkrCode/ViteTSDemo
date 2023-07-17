@@ -10,7 +10,9 @@ const CocktailList: React.FC <CocktailListProps> = function({ data, ingredients 
 
     const ListOfCocktails = data.map((item: Drink, index:number)=>{
         
-        return <Cocktail key={index} ingredients={ingredients} data={item}></Cocktail>
+        return(<div key={index} className="bg-white rounded-md shadow-md p-4 mb-4">
+            <Cocktail  ingredients={ingredients} data={item}></Cocktail>
+        </div>) 
     })
 
     return <div>

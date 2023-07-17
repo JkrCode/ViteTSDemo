@@ -18,20 +18,27 @@ async function handleClick () {
 
   
   return (
-    <div className="m-4 flex-col">
-
+    <div className="container mx-auto my-8">
+      <h1 className="text-3xl italic font-bold mb-4 text-center">Cocktailfinder</h1>
       <div className="flex justify-center">
-        <h1 className="text-xl italic font-bold mb-4 ">Cocktailfinder</h1>
-      </div>
-      <div className="flex flex-row justify-center">
-          <IngredientPicker ingredients={ingredients} setIngredients={setIngredients} />
-          <CocktailList ingredients={ingredients} data={drinks}/>
+        <IngredientPicker
+          ingredients={ingredients}
+          setIngredients={setIngredients}
+        />
       </div>
       <div className="flex justify-center">
-        <button onClick={handleClick}>get drinks</button>
-
+        <div className="w-2/5">
+          <CocktailList ingredients={ingredients} data={drinks} />
+        </div>
       </div>
-
+      <div className="flex justify-center mt-4">
+        <button
+          className="py-2 px-4 text-white bg-blue-500 rounded-md hover:bg-blue-600"
+          onClick={handleClick}
+        >
+          Get Drinks
+        </button>
+      </div>
     </div>
       
   )

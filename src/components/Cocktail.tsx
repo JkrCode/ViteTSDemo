@@ -15,11 +15,10 @@ const Cocktail: React.FC<any> = function ({ data, ingredients }) {
         ) {
           return <p className="font-bold">{ingredientValue}</p>;
         } else {
-          console.log(ingredients);
           return <p>{ingredientValue}</p>;
         }
       } else {
-        return null; // or handle the null case as desired
+        return null; 
       }
     };
 
